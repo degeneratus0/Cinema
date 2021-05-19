@@ -1,0 +1,52 @@
+﻿<Page x:Class="Cinema.Pages.ManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="ManagerPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <ComboBox x:Name="cmbHall" DisplayMemberPath="Name" SelectionChanged="cmbHall_SelectionChanged" FontSize="10"/>
+            <TextBox x:Name="seekFilm" TextChanged="seekFilm_TextChanged"/>
+        </UniformGrid>
+        <DataGrid Grid.Row="1" x:Name="DGBill" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Film Title" Binding="{Binding Films.Title}"/>
+                <DataGridTextColumn Header="Release Date" Binding="{Binding Films.ReleaseDate, StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Films.DurationMin}" Width="60"/>
+                <DataGridTemplateColumn Header="Poster" Width="45">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnViewPoster" Click="BtnViewPoster_Click" Content="View"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Hall Name" Binding="{Binding Halls.Name}" Width="70"/>
+                <DataGridTextColumn Header="Places" Binding="{Binding Halls.Places}" Width="45"/>
+                <DataGridTextColumn Header="Show Date&amp;Time" Binding="{Binding ShowDateTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <UniformGrid Columns="3" Grid.Row="2">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="PagesCount"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="RecordsCount"/>
+            <ComboBox x:Name="cmbRecPerPage" VerticalAlignment="Center" SelectionChanged="cmbRecPerPage_SelectionChanged"/>
+        </UniformGrid>
+        <UniformGrid Columns="5" Grid.Row="3">
+            <Button Content="First" x:Name="First" Click="First_Click"/>
+            <Button Content="Prev" x:Name="Prev" Click="Prev_Click"/>
+            <Button Content="All" x:Name="All" Click="All_Click"/>
+            <Button Content="Next" x:Name="Next" Click="Next_Click"/>
+            <Button Content="Last" x:Name="Last" Click="Last_Click"/>
+        </UniformGrid>
+    </Grid>
+</Page>

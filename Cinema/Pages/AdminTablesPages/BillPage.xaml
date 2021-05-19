@@ -1,0 +1,48 @@
+﻿<Page x:Class="Cinema.Pages.AdminTablesPages.BillPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema.Pages.AdminTablesPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BillPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="4">
+            <Button x:Name="BtnAdd" Click="BtnAdd_Click"  Content="Add"/>
+            <Button x:Name="BtnDelete" Click="BtnDelete_Click"  Content="Delete"/>
+            <Button x:Name="BtnEdit" Click="BtnEdit_Click"  Content="Edit"/>
+            <Button x:Name="BtnBack" Click="BtnBack_Click"  Content="Back" Background="Gray"/>
+        </UniformGrid>
+        <DataGrid Grid.Row="1" x:Name="DGBill" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Film Title" Binding="{Binding Films.Title}"/>
+                <DataGridTextColumn Header="Release Date" Binding="{Binding Films.ReleaseDate, StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Films.DurationMin}" Width="60"/>
+                <DataGridTemplateColumn Header="Poster" Width="45">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnViewPoster" Click="BtnViewPoster_Click"  Content="View"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Hall Name" Binding="{Binding Halls.Name}" Width="70"/>
+                <DataGridTextColumn Header="Places" Binding="{Binding Halls.Places}" Width="45"/>
+                <DataGridTextColumn Header="Show Date&amp;Time" Binding="{Binding ShowDateTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <UniformGrid Columns="5" Grid.Row="2">
+            <Button Content="First" x:Name="First" Click="First_Click"/>
+            <Button Content="Prev" x:Name="Prev" Click="Prev_Click"/>
+            <TextBlock HorizontalAlignment="Center" x:Name="Info"></TextBlock>
+            <Button Content="Next" x:Name="Next" Click="Next_Click"/>
+            <Button Content="Last" x:Name="Last" Click="Last_Click"/>
+        </UniformGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,31 @@
+﻿<Window x:Class="Cinema.AddEditFilms"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema"
+        mc:Ignorable="d"
+        Title="AddEditFilms" Height="200" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Title</TextBlock>
+            <TextBox Text="{Binding Title}"/>
+            <TextBlock>Release Date</TextBlock>
+            <DatePicker SelectedDate="{Binding ReleaseDate}"/>
+            <TextBlock>Description</TextBlock>
+            <TextBox Text="{Binding Description}"/>
+            <TextBlock>Duration (min)</TextBlock>
+            <TextBox Text="{Binding DurationMin}"/>
+            <Button x:Name="ViewPoster" Click="ViewPoster_Click" Content="View current poster"/>
+            <Button x:Name="BtnImage" Click="BtnImage_Click" Content="Add Poster"/>
+        </UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <Button x:Name="BtnSave" Click="BtnSave_Click" Content="Save"/>
+            <Button x:Name="BtnCancel" Click="BtnCancel_Click" Content="Cancel"/>
+        </UniformGrid>
+    </Grid>
+</Window>

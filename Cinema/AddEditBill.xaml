@@ -1,0 +1,27 @@
+﻿<Window x:Class="Cinema.AddEditBill"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema"
+        mc:Ignorable="d"
+        Title="AddEditBill" Height="150" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Film</TextBlock>
+            <ComboBox x:Name="cmbFilm" SelectedItem="{Binding Films}" DisplayMemberPath="Title"/>
+            <TextBlock>Hall</TextBlock>
+            <ComboBox x:Name="cmbHall" SelectedItem="{Binding Halls}" DisplayMemberPath="Name"/>
+            <TextBlock>Show Date&amp;Time</TextBlock>
+            <DatePicker SelectedDate="{Binding ShowDateTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}"/>
+        </UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <Button x:Name="BtnSave" Click="BtnSave_Click"  Content="Save"/>
+            <Button x:Name="BtnCancel" Click="BtnCancel_Click" Content="Cancel"/>
+        </UniformGrid>
+    </Grid>
+</Window>
